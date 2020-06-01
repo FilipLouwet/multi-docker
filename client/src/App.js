@@ -8,22 +8,24 @@ import Fib from './Fib';
 
 function App() {
   return (
-    <NavBar/>
-    <Router>
-      <div className="App">
-          <header className="App-header">
-            <p>
-              Fibonacci Calculator
-            </p>
-            <Link to="/">Home</Link>
-            <Link to="/otherPage">Other Page</Link>
-          </header>
-          <div>
-            <Route exact path="/" component={Fib} />
-            <Route path="/otherpage" component={OtherPage} />
-          </div>
-      </div>
-    </Router>
+    <React.Fragment>
+      <NavBar/>
+      <Router>
+        <div className="App">
+            <header className="App-header">
+              <p>
+                Fibonacci Calculator
+              </p>
+              <Link to="/">Home</Link>
+              <Link to="/otherPage">Other Page</Link>
+            </header>
+            <div>
+              <Route exact path="/" component={Fib} />
+              <Route path="/otherpage" component={OtherPage} />
+            </div>
+        </div>
+      </Router>
+    </React.Fragment>
   );
 }
 
