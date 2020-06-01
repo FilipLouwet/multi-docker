@@ -14,7 +14,7 @@ function App() {
         <div className="App">
             <header className="App-header">
               <p>
-                Fibonacci Calculator
+                Fibonacci Calculator v2
               </p>
               <Link to="/">Home</Link>
               <Link to="/otherPage">Other Page</Link>
