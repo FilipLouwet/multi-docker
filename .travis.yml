@@ -1,0 +1,21 @@
+sudo: required
+services:
+    - docker
+before_install:
+    - docker build -t pixosaur/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+    - docker run -e CI=true pixosaur/react-test npm test
+
+after_success:
+    - docker build -t pixosaur/multi-client ./client
+    - docker build -t pixosaur/multi-nginx ./nginx
+    - docker build -t pixosaur/multi-server ./server
+    - docker build -t pixosaur/multi-worker ./worker
+# Log in to docker CLI
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - docker push pixosaur/multi-client
+    - docker push pixosaur/multi-nginx
+    - docker push pixosaur/multi-server
+    - docker push pixosaur/multi-worker
+    
